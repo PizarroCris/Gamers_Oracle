@@ -20,8 +20,8 @@ puts "Seeding games..."
 5.times do
   image_url = "https://static.photos/gaming/1024x576/#{rand(54..168)}"
   io = URI.parse(image_url).open
-   game = Game.new(name: Faker::Game.unique.title)
-   game.image.attach(
+  game = Game.new(name: Faker::Game.unique.title)
+  game.image.attach(
     io: io,
     filename:"game_#{rand(1000)}.jpg",
     content_type: "image/jpg"
@@ -31,7 +31,7 @@ end
 
 puts "Seeding chats..."
 chats = users.map do |user|
-   Chat.create!(user: user, game: Game.all.sample)
+  Chat.create!(user: user, game: Game.all.sample)
 end
 
 puts "Seeding messages…"
